@@ -8,4 +8,8 @@ func routes(_ app: Application) throws {
     app.get("hello") { req -> String in
         return "Hello, world!"
     }
+    
+    app.get("health") { req -> String in
+        return "We are healthy!"
+    }
 }
