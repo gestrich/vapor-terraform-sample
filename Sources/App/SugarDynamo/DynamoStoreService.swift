@@ -10,6 +10,7 @@ import NIO
 import NIOHelpers
 import SotoDynamoDB
 import AsyncHTTPClient
+import Vapor
 
 public struct DynamoStoreService {
     
@@ -18,7 +19,6 @@ public struct DynamoStoreService {
     public static let testDatabaseName = "EGVTest"
     
     let awsClient: SotoCore.AWSClient
-    let httpClient: AsyncHTTPClient.HTTPClient
     let db: DynamoDB
     let tableName: String
     let nowDateProvider: () -> Date
@@ -26,18 +26,16 @@ public struct DynamoStoreService {
     
     //General
     
-    public init(tableName: String, nowDateProvider: @escaping () -> Date = { Date()} ) {
+    public init(tableName: String, awsClient: AWSClient, nowDateProvider: @escaping () -> Date = { Date()} ) {
         let provider = AsyncHTTPClient.HTTPClient.EventLoopGroupProvider.createNew
-        self.httpClient = AsyncHTTPClient.HTTPClient(eventLoopGroupProvider: provider)
-        self.awsClient = AWSClient(httpClientProvider: .shared(httpClient))
+        self.awsClient = awsClient
         self.db = DynamoDB(client: awsClient, region: .useast1)
         self.tableName = tableName
         self.nowDateProvider = nowDateProvider
     }
     
     public func syncShutdown() throws {
-        try self.awsClient.syncShutdown()
-        try self.httpClient.syncShutdown()
+//        try self.awsClient.syncShutdown()
     }
     
     public func createTable() async throws -> DynamoDB.CreateTableOutput {

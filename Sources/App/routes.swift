@@ -13,5 +13,5 @@ func routes(_ app: Application) throws {
         return "We are healthy!"
     }
     
-    try app.register(collection: DynamoController())
+    try app.register(collection: DynamoController(awsClient: app.aws.client))
 }

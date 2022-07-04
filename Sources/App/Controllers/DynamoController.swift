@@ -6,11 +6,15 @@
 //
 
 import Vapor
+import SotoCore
 
 struct DynamoController: RouteCollection {
     
-    let store = DynamoStoreService(tableName: "sugar-monitor")
-
+    let store: DynamoStoreService
+    
+    init(awsClient: AWSClient) {
+        store = DynamoStoreService(tableName: "sugar-monitor", awsClient: awsClient)
+    }
     
     func boot(routes: RoutesBuilder) throws {
         let todos = routes.grouped("accounts")
@@ -20,4 +24,5 @@ struct DynamoController: RouteCollection {
     func show(req: Request) async throws -> String {
         let users = try await store.getUsers()
         return "\(users.count)"
-    }}
+    }
+}
