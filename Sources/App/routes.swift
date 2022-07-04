@@ -13,8 +13,5 @@ func routes(_ app: Application) throws {
         return "We are healthy!"
     }
     
-    app.get("accounts") { req async throws -> String in
-        let store = DynamoStoreService(tableName: "sugar-monitor")
-        return try await store.getUser(email: "wgestrich@gmail.com")?.email ?? "Could not find"
-    }
+    try app.register(collection: DynamoController())
 }
