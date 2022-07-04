@@ -22,7 +22,12 @@ struct DynamoController: RouteCollection {
     }
 
     func show(req: Request) async throws -> String {
-        let users = try await store.getUsers()
-        return "\(users.count)"
+        do {
+            let users = try await store.getUsers()
+            return "\(users.count)"
+        } catch {
+            return "\(error)"
+        }
+
     }
 }
