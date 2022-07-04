@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "jmespath.swift",
+        "repositoryURL": "https://github.com/adam-fowler/jmespath.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "4513d319c4aaa6c3b2ac18e1e6566a803515ad91",
+          "version": "1.0.2"
+        }
+      },
+      {
         "package": "multipart-kit",
         "repositoryURL": "https://github.com/vapor/multipart-kit.git",
         "state": {
@@ -44,6 +53,33 @@
           "branch": null,
           "revision": "a0801a36a6ad501d5ad6285cbcd4774de6b0a734",
           "version": "4.3.0"
+        }
+      },
+      {
+        "package": "soto",
+        "repositoryURL": "https://github.com/soto-project/soto.git",
+        "state": {
+          "branch": null,
+          "revision": "3648a7fcbaa1ac06b6ab2b4b227d521ed065e780",
+          "version": "5.13.1"
+        }
+      },
+      {
+        "package": "soto-core",
+        "repositoryURL": "https://github.com/soto-project/soto-core.git",
+        "state": {
+          "branch": null,
+          "revision": "3079d17f2576cff5f2a3f68865629af455c673d1",
+          "version": "5.9.3"
+        }
+      },
+      {
+        "package": "swift-aws-lambda-runtime",
+        "repositoryURL": "https://github.com/swift-server/swift-aws-lambda-runtime.git",
+        "state": {
+          "branch": null,
+          "revision": "699ada1724459582303c15aae64fa12ca4d33809",
+          "version": "0.5.2"
         }
       },
       {
@@ -87,8 +123,8 @@
         "repositoryURL": "https://github.com/apple/swift-nio.git",
         "state": {
           "branch": null,
-          "revision": "37e7a33de45bac894c0b08b56a2f755ebe4884e6",
-          "version": "2.35.0"
+          "revision": "124119f0bb12384cef35aa041d7c3a686108722d",
+          "version": "2.40.0"
         }
       },
       {
@@ -125,6 +161,15 @@
           "branch": null,
           "revision": "e7f5278a26442dc46783ba7e063643d524e414a0",
           "version": "1.11.3"
+        }
+      },
+      {
+        "package": "swift-server-utilities",
+        "repositoryURL": "https://github.com/gestrich/swift-server-utilities.git",
+        "state": {
+          "branch": null,
+          "revision": "70a1045ac0fd36c2adae06bb385dabc44f7f4ae1",
+          "version": "0.1.4"
         }
       },
       {
