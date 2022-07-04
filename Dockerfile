@@ -63,19 +63,3 @@ EXPOSE 3000
 # Start the Vapor service when the image is run, default to listening on 8080 in production environment
 ENTRYPOINT ["./Run"]
 CMD ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "3000"]
-
-
-===================
-CodeBuild Test Error
-
-Started Pipeline at 10:40am
-
-
-===================
-DynamoDb Access Issue
-
-Stack Overflow:
-
-https://stackoverflow.com/questions/56863605/access-dynamodb-from-fargate-container-in-private-subnets
-	Do I need a VPC endpoint for dynamoDB?
-	
