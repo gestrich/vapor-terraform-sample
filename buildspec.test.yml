@@ -3,6 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
+      - pg_ctlcluster 11 main restart
       - swift test
 cache:
   paths:

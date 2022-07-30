@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Environment variables
+      - env
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo "Login to Docker..."
+      - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD;
+      - echo Building the SugarMonitorLambda image...
+      - make build-SugarMonitorLambda
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Packaging to zip
+      - ls .aws-sam
+      - ls .aws-sam/build/SugarMonitorLambda
+      - ls .aws-sam/build-SugarMonitorLambda
+      - ls .aws-sam/build-SugarMonitorLambda/lambda
+      - cd .aws-sam/build-SugarMonitorLambda/lambda
+      - zip --symlinks lambda.zip *
+      - echo Uploading lambda...
+      - aws lambda update-function-code --function-name SugarMonitor --zip-file fileb://lambda.zip --cli-connect-timeout 6000

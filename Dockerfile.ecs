@@ -23,7 +23,7 @@ RUN swift package resolve
 COPY . .
 
 # Build everything, with optimizations
-RUN swift build -c release
+RUN swift build -c release --product Run
 
 # Switch to the staging area
 WORKDIR /staging

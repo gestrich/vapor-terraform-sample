@@ -13,9 +13,9 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...          
+      - echo Building the Docker image...
       - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD;
-      - docker build -t $APP_IMAGE_NAME:$IMAGE_TAG .
+      - docker build -t $APP_IMAGE_NAME:$IMAGE_TAG -f Dockerfile.ecs .
       - docker tag $APP_IMAGE_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$APP_IMAGE_NAME:$IMAGE_TAG
       - printf '[{"name":"%s","imageUri":"%s.dkr.ecr.%s.amazonaws.com/%s:%s"}]' $APP_IMAGE_NAME $AWS_ACCOUNT_ID $AWS_DEFAULT_REGION $APP_IMAGE_NAME $IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json
